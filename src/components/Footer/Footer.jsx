@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleFooter } from './style';
 
-export const Footer = () => {
+export const Footer = ({totalCards, qtdCardsConcluidos}) => {
   return (
     <StyleFooter>
-      <p>0/4 CONCLUÍDOS</p>
+      <p>{qtdCardsConcluidos}/{totalCards} CONCLUÍDOS</p>
     </StyleFooter>
   )
 }
