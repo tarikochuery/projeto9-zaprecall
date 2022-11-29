@@ -37,7 +37,7 @@ export const CardPergunta = ({concluirCard, numeroPergunta, card: { question, an
     setStatusCor(cor)
     setSrcImg(imagem)
     setConteudoParagrafo(`Pergunta ${numeroPergunta}`)
-    concluirCard()
+    concluirCard({imagem, dataTest})
     dataTestIcon = dataTest
   }
 

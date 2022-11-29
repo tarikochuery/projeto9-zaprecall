@@ -8,6 +8,5 @@ export const StyleApp = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0px;
-  padding: 0px;
+  padding-bottom: ${props => props.status ? '50px' : '0'}
 `

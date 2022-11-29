@@ -10,11 +10,13 @@ import { BoasVindas } from "../BoasVindas/BoasVindas";
 const totalCards = deckReact.length
 
 export const App = () => {
-  const [qtdCardsConcluidos, setQtdCardsConcluidos] = useState(0)
   const [estaIniciado, setEstaIniciado] = useState(false)
+  const [iconesRespondidos, setIconesRespondidos] = useState([])
 
-  const concluirCard = () => {
-    setQtdCardsConcluidos(prev => prev + 1)
+  const qtdCardsConcluidos = iconesRespondidos.length
+
+  const concluirCard = (icone) => {
+    setIconesRespondidos([...iconesRespondidos, icone])
   }
 
   const iniciarApp = () => {
@@ -24,7 +26,7 @@ export const App = () => {
   return(
     <>
       <GlobalStyle />
-      <StyleApp>
+      <StyleApp status={estaIniciado}>
         {!estaIniciado 
         ?
           <BoasVindas iniciarApp={iniciarApp}/>
@@ -32,7 +34,7 @@ export const App = () => {
           <>
           <Logo />
           <ListaPerguntas concluirCard={concluirCard} deck={deckReact}/>
-          <Footer totalCards={totalCards} qtdCardsConcluidos={qtdCardsConcluidos} />
+          <Footer iconesRespondidos={iconesRespondidos} totalCards={totalCards} qtdCardsConcluidos={qtdCardsConcluidos} />
           </>
         } 
       </StyleApp>
