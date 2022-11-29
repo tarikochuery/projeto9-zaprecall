@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const estiloCartaFechada = `width: 100%;
+const estiloCartaFechada = `
+width: 100%;
+max-width: 300px;
 height: 35px;
 background-color: #FFFFFF;
 padding: 15px;
@@ -14,6 +16,7 @@ justify-content: space-between;
 
 const estiloCartaAberta = `
 width: 100%;
+max-width: 300px;
 padding: 15px;
 min-height: 100px;
 background: #FFFFD5;
