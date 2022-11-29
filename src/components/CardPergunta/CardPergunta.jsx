@@ -17,6 +17,7 @@ export const CardPergunta = ({concluirCard, numeroPergunta, card: { question, an
   const [estaFinalizada, setEstaFinalizada] = useState(false)
   const [statusCor, setStatusCor] = useState('')
   const [srcImg, setSrcImg] = useState(arrow)
+  let dataTestIcon
 
   const handleClickCartaFechada = () => {
     if (estaAberta) return;
@@ -31,32 +32,34 @@ export const CardPergunta = ({concluirCard, numeroPergunta, card: { question, an
     setConteudoParagrafo(answer);
   };
 
-  const handleClickResposta = (cor, imagem) => {
+  const handleClickResposta = (cor, imagem, dataTest) => {
     setEstaFinalizada(true)
     setStatusCor(cor)
     setSrcImg(imagem)
     setConteudoParagrafo(`Pergunta ${numeroPergunta}`)
     concluirCard()
+    dataTestIcon = dataTest
   }
 
   return (
     <StyleCardPergunta
+      data-test='flashcard play-btn'
       onClick={handleClickCartaFechada}
       estaAberta={estaAberta}
       estaFinalizada={estaFinalizada}
       statusCor={statusCor}
     >
-      <p>{conteudoParagrafo}</p>
-      {(!estaRespondida || estaFinalizada) && <img onClick={handleClickCartaAberta} src={srcImg} />}
+      <p data-test='flashcard-text'>{conteudoParagrafo}</p>
+      {(!estaRespondida || estaFinalizada) && <img data-test={!estaFinalizada ? 'turn-btn' : dataTestIcon} onClick={handleClickCartaAberta} src={srcImg} />}
       {(estaRespondida && !estaFinalizada) &&
         <ContainerBotoes>
-          <StyleButton onClick={() => handleClickResposta(VERMELHO, erro)} color={VERMELHO}>
+          <StyleButton onClick={() => handleClickResposta(VERMELHO, erro, 'no-icon')} color={VERMELHO}>
             Não Lembrei
           </StyleButton>
-          <StyleButton onClick={() => handleClickResposta(AMARELO, acertoComDificuldade)} color={AMARELO}>
+          <StyleButton onClick={() => handleClickResposta(AMARELO, acertoComDificuldade, 'partial-icon')} color={AMARELO}>
             Quase não lembrei
           </StyleButton>
-          <StyleButton onClick={() => handleClickResposta(VERDE, zap)} color={VERDE}>
+          <StyleButton onClick={() => handleClickResposta(VERDE, zap, 'zap-icon')} color={VERDE}>
             Zap!
           </StyleButton>
         </ContainerBotoes>}

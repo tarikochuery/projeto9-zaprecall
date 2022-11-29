@@ -3,7 +3,7 @@ import { StyleFooter } from './style';
 
 export const Footer = ({totalCards, qtdCardsConcluidos}) => {
   return (
-    <StyleFooter>
+    <StyleFooter data-test='footer'>
       <p>{qtdCardsConcluidos}/{totalCards} CONCLUÍDOS</p>
     </StyleFooter>
   )
