@@ -16,6 +16,11 @@ export const StyleFooter = styled.div`
   font-size: 18px;
   color: #333333;
   padding: 10px;
+  text-align: center;
+
+  strong {
+    font-weight: 700;
+  }
 
   & .icones-container {
     display: flex;
