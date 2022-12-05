@@ -26,10 +26,12 @@ export const Footer = ({totalCards, qtdCardsConcluidos, iconesRespondidos}) => {
   return (
     <StyleFooter data-test='footer'>
       {totalCards === qtdCardsConcluidos && 
-        <div data-test='finish-text'>
-          <strong><img src={mensagem.emoji} />{mensagem.titulo}</strong>
-          <br />
-          <p>{mensagem.corpo}</p>
+        <div>
+          <p data-test='finish-text'>
+            <strong><img src={mensagem.emoji} /> {mensagem.titulo}</strong>
+            <br />
+            {mensagem.corpo}
+          </p>
         </div>
       }
       <p>{qtdCardsConcluidos}/{totalCards} CONCLUÍDOS</p>
